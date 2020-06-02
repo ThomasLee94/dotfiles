@@ -4,7 +4,9 @@ call plug#begin('~/.vim/plugged')
 " Declare the list of plugins.
 Plug 'ctrlpvim/ctrlp.vim' " Fuzzy file finder.
 Plug 'sheerun/vim-polyglot' " Better syntax and indentation.
-Plug 'itchyny/lightline.vim' " update status line.
+Plug 'vim-airline/vim-airline'
+Plug 'preservim/nerdtree'
+Plug 'ryanoasis/vim-devicons' " Install devicon Install devicons
 Plug 'jlanzarotta/bufexplorer' " Buffer explorer
 Plug 'airblade/vim-gitgutter' " Shows git diffs in 'gutter'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -13,12 +15,19 @@ Plug 'w0rp/ale' " Asyncrhonous linter for all linters
 Plug 'RRethy/vim-illuminate' " Highlight words that match what's under the cursor throughout the file
 Plug 'lilydjwg/colorizer' " Colorize hex color codes
 Plug 'Yggdroot/indentLine' "Adds indentation lines
-Plug 'ntk148v/vim-horizon' "Horizon vim theme
-Plug 'mcmartelle/vim-monokai-bold' "Vim colour scheme
 call plug#end() "Init all plugins
+
+" Add powerline to vim shell
+let g:airline_powerline_fonts = 1
+" Enable tab lines
+let g:airline#extensions#tabline#enabled = 1
 
 " plugin related variables/configs
 let g:ycm_global_ycm_extra_conf='~/.vim/.ycm_extra_conf.py'
+
+" nerdtree mapping
+map <C-N> :NERDTreeToggle %<CR>
+let NERDTreeShowHidden=1
 
 let g:coc_global_extensions = [
     \ 'coc-snippets',
@@ -153,9 +162,7 @@ set rtp+=$GOPATH/src/golang.org/x/lint/misc/vim " sets up golang/linter
 
 " Colour scheme
 syntax on
-set t_Co=256 
-let g:monokai_term_italic = 1
-let g:monokai_gui_italic = 1
+set termguicolors
 
 " Copy into clipboard
 vnoremap <C-c> "+y

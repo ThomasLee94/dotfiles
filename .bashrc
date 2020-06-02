@@ -145,3 +145,17 @@ vim(){
     command nvim "$@"
     stty "$STTYOPTS"
 }
+
+# Instruct bazel to use gcc-6 as the C++ compiler.
+#
+# This is a bug fix to a complicated problem:
+#
+# Our C++ binaries are statically linked with a single exception: bazel cannot
+# statically link the standard library. As a result, our binaries dynamically
+# link with the libstdc++ binary hosted on the production machine. This is very
+# standard. However, it means that we must compile our binaries with the exact
+# same libstdc++ that exists on the target machine. In our case, our containers
+# are distroless/cc and contain the gcc-6 libraries. Because of this, all of
+# our builds MUST be built with gcc-6.
+export CC=gcc-6
+export CXX=g++-6

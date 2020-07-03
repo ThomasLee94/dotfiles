@@ -15,6 +15,7 @@ Plug 'w0rp/ale' " Asyncrhonous linter for all linters
 Plug 'RRethy/vim-illuminate' " Highlight words that match what's under the cursor throughout the file
 Plug 'lilydjwg/colorizer' " Colorize hex color codes
 Plug 'Yggdroot/indentLine' "Adds indentation lines
+Plug 'preservim/nerdcommenter' "Comments
 call plug#end() "Init all plugins
 
 " Add powerline to vim shell
@@ -162,7 +163,7 @@ set rtp+=$GOPATH/src/golang.org/x/lint/misc/vim " sets up golang/linter
 
 " Colour scheme
 syntax on
-set termguicolors
+" set termguicolors
 
 " Copy into clipboard
 vnoremap <C-c> "+y
